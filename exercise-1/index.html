@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <p id="myDiv"></p>
+  <div class="page-wrap">
+    <div id="user-container"></div>
+  </div>
+
+  <script>
+    let obj, url = 'https://5dc588200bbd050014fb8ae1.mockapi.io/assessment';
+    let combinedData;
+    //defining a function
+    function getListOfUsers(url) {
+      fetch(url).then(response => response.json()).then(data => {
+        obj = { data };
+        console.log("$$$$$$$$$$$$", obj);
+        createHtml(obj)
+      });
+    }
+    function createHtml(ourData) { 
+      console.log("%%%%%", ourData)
+      let rawTemplate = document.getElementById("ourTemplate").innerHTML;
+      console.log("#####", rawTemplate)
+      let compiledTemplate = Handlebars.compile(rawTemplate);
+      let ourGeneratedHTML = compiledTemplate(ourData);
+      let userContainer = document.getElementById("user-container");
+      userContainer.innerHTML = ourGeneratedHTML;
+    }
+
+
+    //calling the function
+    getListOfUsers(url);
+
+  </script>
+
+
+  <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+  <script src="./handlebars.min-v4.7.7.js"></script>
+
+  <script id="ourTemplate" type="text/x-handlebars-template">
+  {{#each data}}
+  <div class="photo-column">
+    <ul>
+      <li>  ID:{{id}}<br>
+            UserName:{{name}}<br>
+            Image:<img src="{{avatar}}" width="30" height="30"><br>
+            CreatedDate :{{createdAt}}
+        </li>
+          
+    </ul>
+  {{/each}}
+</script>
+
+</body>
+
+</html>
