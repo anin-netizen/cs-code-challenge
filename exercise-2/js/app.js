@@ -6,7 +6,7 @@
   var incompleteTasksList = new Array('Pay Bills', 'Go Shopping');
   var completeTasksList = new Array('See the Doctor');
   
-  var createNewTaskElement = function(taskString, arr) {
+  var createNewTaskElement = function(taskString) {
     listItem = document.createElement("li");
     checkBox = document.createElement("input");
     label = document.createElement("label");
@@ -14,14 +14,15 @@
     editButton = document.createElement("button");
     deleteButton = document.createElement("button");
 
+    label.innerText = taskString;
+
     checkBox.type = "checkbox";
     editInput.type = "text";
     editButton.innerText = "Edit";
     editButton.className = "edit";
     deleteButton.innerText = "Delete";
     deleteButton.className = "delete";
-
-    label.innerText = taskString;
+    
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
     listItem.appendChild(editInput);
@@ -116,7 +117,7 @@
     }
     ul.removeChild(listItem);
   };
-  var taskCompleted = function (el) {
+  var taskCompleted = function () {
     var listItem = this.parentNode;
     var label = listItem.querySelector("label").innerText;
     // console.log(completeTasksList);
