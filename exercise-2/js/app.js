@@ -43,7 +43,7 @@
       localStorage.setItem("incompleteTasks",JSON.stringify(incompleteTasksList));
     }
     for(let i=0; i<incompleteTasksList.length; i++){
-      var listitem = createNewTaskElement(incompleteTasksList[i]);
+      var listItem = createNewTaskElement(incompleteTasksList[i]);
       incompleteTasksHolder.appendChild(listItem);
       bindTaskEvents(listItem, taskIncomplete);
       }
@@ -54,7 +54,7 @@
       localStorage.setItem("completeTasks",JSON.stringify(completeTasksList));
     }
     for(let i=0; i<completeTasksList.length; i++){
-      var listitem = createNewTaskElement(completeTasksList[i]);
+      var listItem = createNewTaskElement(completeTasksList[i]);
       completedTasksHolder.appendChild(listItem);
       bindTaskEvents(listItem, taskCompleted);
       }
@@ -75,7 +75,7 @@
   };
   var editTask = function () {
     var listItem = this.parentNode;
-    var editInput = listItem.querySelectorAll("input[type=text")[0];
+    var editInput = listItem.querySelectorAll("input[type=text]")[0];
     var label = listItem.querySelector("label");
     var button = listItem.getElementsByTagName("button")[0];
     var idx = incompleteTasksList.indexOf(label.innerText);
@@ -117,6 +117,8 @@
     }
     ul.removeChild(listItem);
   };
+
+ 
   var taskCompleted = function () {
     var listItem = this.parentNode;
     var label = listItem.querySelector("label").innerText;
