@@ -164,6 +164,7 @@
     editButton.onclick = editTask;
     deleteButton.onclick = deleteTask;
     checkBox.onchange = checkBoxEventHandler;
+   
   };
   
   addButton.addEventListener("click", addTask);

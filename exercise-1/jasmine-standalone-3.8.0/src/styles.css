@@ -1,0 +1,19 @@
+html, body {
+    
+    margin: 20px;
+    font-family:'Times New Roman', Times, serif;
+    
+  }
+
+  table {     
+    border-spacing: 40px;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;    
+  }
+  th{
+      font-size: large;
+  }
+
+  

@@ -33,15 +33,15 @@ Solve the problems presented in whatever way you deem most appropriate and in ke
     * Use Sass for any styles.
 
 #### Fixes
-1. Break the contents of the HTML file into pieces that follow a logical separation of concerns for the browser.
-2. Fix any invalid HTML
+--1. Break the contents of the HTML file into pieces that follow a logical separation of concerns for the browser.
+--2. Fix any invalid HTML
 3. Fix any JS errors / inefficiencies.
-5. Utilize closures to prevent pollution of the global object with app code
+--5. Utilize closures to prevent pollution of the global object with app code
 
 #### Features
-1. Make the form keyboard-accessible
-2. Add support for localStorage such that refreshing the page does not reset your task list
-3. Add form validation such that an empty task cannot be submitted.
+--1. Make the form keyboard-accessible
+--2. Add support for localStorage such that refreshing the page does not reset your task list
+--3. Add form validation such that an empty task cannot be submitted.
 4. Convert float-based layouts to flexbox-based layouts. The visuals should not change, just the CSS that handles the layout.
 5. Make the design responsive, such that -
     * The form fills 100% width of the screen up until 375px wide

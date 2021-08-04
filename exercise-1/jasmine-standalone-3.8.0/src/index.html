@@ -3,6 +3,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <html>
 
@@ -12,6 +13,7 @@
     <div id="user-container"></div>
   </div>
 
+  <script src="./handlebars-v4.7.7.js"></script>
   <script>
     let obj, url = 'https://5dc588200bbd050014fb8ae1.mockapi.io/assessment';
     let combinedData;
@@ -33,29 +35,32 @@
       userContainer.innerHTML = ourGeneratedHTML;
     }
 
-
     //calling the function
     getListOfUsers(url);
 
   </script>
 
 
-  <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
-  <script src="./handlebars.min-v4.7.7.js"></script>
-
   <script id="ourTemplate" type="text/x-handlebars-template">
-  {{#each data}}
-  <div>
-    <ul>
-      <li>  
-            Avatar: <img src="{{avatar}}" alt="no image"width="40" height="40"><br>
-            ID: {{id}}<br>
-            Name: {{name}}<br>           
-            CreatedDate: {{createdAt}}
-        </li>
-          
-    </ul>
-  {{/each}}
+    <table>
+      <tbody>
+        <tr>
+            <th>Avatar</th>
+            <th>Details</th> 
+        </tr>
+        {{#each data}}         
+        <tr>         
+          <td><p><img class="pic" src="{{avatar}}" alt="no image"></p></td>
+          <td>
+            <p></p><b>ID</b>: {{id}}</p>
+            <p><b>Name</b>: {{name}}</p>       
+            <p><b>Created At</b>: {{createdAt}}</p>
+                                                
+          </td>      
+          </td>
+        </tr>
+          {{/each}}
+      </tbody> 
 </script>
 
 </body>
