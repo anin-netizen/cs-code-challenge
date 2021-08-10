@@ -4,6 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  
 </head>
 <html>
 
@@ -26,18 +27,24 @@
       });
     }
     function createHtml(ourData) { 
-      console.log("%%%%%", ourData)
+      //console.log("%%%%%", ourData)
       let rawTemplate = document.getElementById("ourTemplate").innerHTML;
-      console.log("#####", rawTemplate)
+      //console.log("#####", rawTemplate)
       let compiledTemplate = Handlebars.compile(rawTemplate);
       let ourGeneratedHTML = compiledTemplate(ourData);
       let userContainer = document.getElementById("user-container");
       userContainer.innerHTML = ourGeneratedHTML;
+      
     }
 
     //calling the function
     getListOfUsers(url);
-
+    
+    userData.map((item) => {
+    item.createdAt = new Date(item.createdAt).toLocaleDateString("en-US");
+    return item;
+    });
+    
   </script>
 
 
@@ -50,7 +57,7 @@
         </tr>
         {{#each data}}         
         <tr>         
-          <td><p><img class="pic" src="{{avatar}}" alt="no image"></p></td>
+          <td><p><img class="pic" src="{{avatar}}" alt=""></p></td>
           <td>
             <p></p><b>ID</b>: {{id}}</p>
             <p><b>Name</b>: {{name}}</p>       
