@@ -3,26 +3,26 @@
   var addButton = document.getElementsByTagName("button")[0];
   var incompleteTasksHolder = document.getElementById("incomplete-tasks");
   var completedTasksHolder = document.getElementById("completed-tasks");
-  var incompleteTasksList = new Array('Pay Bills', 'Go Shopping');
-  var completeTasksList = new Array('See the Doctor');
+  var incompleteTasksList = ['Pay Bills', 'Go Shopping'];
+  var completeTasksList = ['See the doctor'];
   
-  var createNewTaskElement = function(taskString) {
+  var createNewTaskElement = function(taskString, arr) {
     listItem = document.createElement("li");
     checkBox = document.createElement("input");
     label = document.createElement("label");
     editInput = document.createElement("input");
     editButton = document.createElement("button");
     deleteButton = document.createElement("button");
-
-    label.innerText = taskString;
-
+    
     checkBox.type = "checkbox";
     editInput.type = "text";
     editButton.innerText = "Edit";
     editButton.className = "edit";
     deleteButton.innerText = "Delete";
     deleteButton.className = "delete";
-    
+
+    label.innerText = taskString;
+
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
     listItem.appendChild(editInput);
@@ -45,18 +45,18 @@
     for(let i=0; i<incompleteTasksList.length; i++){
       var listItem = createNewTaskElement(incompleteTasksList[i]);
       incompleteTasksHolder.appendChild(listItem);
-      bindTaskEvents(listItem, taskIncomplete);
+      bindTaskEvents(listItem, taskCompleted);
       }
     if("completeTasks" in localStorage){
       completeTasksList = JSON.parse(localStorage.getItem('completeTasks'));
     } else {
-      // console.log(completeTasksList);
+      console.log(completeTasksList);
       localStorage.setItem("completeTasks",JSON.stringify(completeTasksList));
     }
     for(let i=0; i<completeTasksList.length; i++){
       var listItem = createNewTaskElement(completeTasksList[i]);
       completedTasksHolder.appendChild(listItem);
-      bindTaskEvents(listItem, taskCompleted);
+      bindTaskEvents(listItem, taskIncomplete);
       }
   }
   
