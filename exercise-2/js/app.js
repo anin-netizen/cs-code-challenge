@@ -88,12 +88,15 @@
     var label = listItem.querySelector("label");
     var button = listItem.getElementsByTagName("button")[0];
     var containsClass = listItem.classList.contains("editMode");
+
     var idx1 = incompleteTasksList.indexOf(label.innerText);
     var idx2 = completeTasksList.indexOf(label.innerText);
+    
 
     if (containsClass) {
       var listItemName = editInput.value;
       if (listItemName.trim() == "") {
+        alert("Empty Field")
         editInput.classList.add("error");
         return;
       }
@@ -115,10 +118,12 @@
       }
       label.innerText = editInput.value;
       button.innerText = "Edit";
-    } else {
+    } 
+    else {
       editInput.value = label.innerText;
-      button.innerText = "Save";
+      button.innerText = "Save";      
     }
+    
     listItem.classList.toggle("editMode");
   };
 
