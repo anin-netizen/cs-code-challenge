@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +17,10 @@
 
   <script src="./handlebars-v4.7.7.js"></script>
   <script>
+
     let obj, url = 'https://5dc588200bbd050014fb8ae1.mockapi.io/assessment';
     let combinedData;
-    //defining a function
+    
     function getListOfUsers(url) {
       fetch(url).then(response => response.json()).then(data => {
         obj = { data };
@@ -26,10 +28,13 @@
         createHtml(obj)
       });
     }
+
     function createHtml(ourData) { 
-      //console.log("%%%%%", ourData)
+        ourData.data.map((item) => {
+          item.createdAt = new Date(item.createdAt).toLocaleDateString("en-US");
+          return item;
+        });    
       let rawTemplate = document.getElementById("ourTemplate").innerHTML;
-      //console.log("#####", rawTemplate)
       let compiledTemplate = Handlebars.compile(rawTemplate);
       let ourGeneratedHTML = compiledTemplate(ourData);
       let userContainer = document.getElementById("user-container");
@@ -40,10 +45,7 @@
     //calling the function
     getListOfUsers(url);
     
-    userData.map((item) => {
-    item.createdAt = new Date(item.createdAt).toLocaleDateString("en-US");
-    return item;
-    });
+    
     
   </script>
 
