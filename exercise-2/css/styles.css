@@ -6,31 +6,77 @@ html body {
 
 html body .container {
   display: block;
-  width: 600px;
-  margin: 100px auto 0;
+  width: 375px;
+  margin: 5% auto 0;
 }
 
-html body ul {
+ul {
   margin: 0px;
-  padding: 0;
+  padding: 0px;
 }
 
-html body li * {
-  float: left;
+ul li input[type="text"] {
+  display: none;
 }
 
-html body li,
-html body h3 {
+ul li.editMode input[type="text"] {
+  display: block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+ul li.editMode label {
+  display: none;
+}
+
+li {
   clear: both;
   list-style: none;
+  overflow: hidden;
+  padding: 20px 0px;
+  border-bottom: 1px solid #eee;
 }
 
-html body input,
-html body button {
-  outline: none;
+li * {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
-html body button {
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+}
+
+li > label {
+  font-size: 18px;
+  line-height: 40px;
+  width: 200px;
+  padding: 0 0 0 11px;
+}
+
+li > input[type="text"] {
+  width: 190px;
+}
+
+li > .delete:hover {
+  color: #cf2323;
+}
+
+h3 {
+  clear: both;
+  list-style: none;
+  color: #333333;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #333;
+  padding: 30px 0 10px;
+  margin: 0px;
+  text-transform: uppercase;
+}
+
+button {
   background: none;
   border: 0px;
   color: #888888;
@@ -41,12 +87,11 @@ html body button {
   cursor: pointer;
 }
 
-html body button :hover {
+button:hover {
   color: #333;
 }
 
-html body h3,
-html body label[for="new-task"] {
+label[for="new-task"] {
   color: #333333;
   font-weight: 700;
   font-size: 15px;
@@ -54,10 +99,11 @@ html body label[for="new-task"] {
   padding: 30px 0 10px;
   margin: 0px;
   text-transform: uppercase;
-  display: block; margin: 0 0 20px
+  display: block;
+  margin: 0 0 20px;
 }
 
-html body input[type="text"] {
+input[type="text"] {
   margin: 0;
   font-size: 18px;
   line-height: 18px;
@@ -70,81 +116,53 @@ html body input[type="text"] {
   color: #888;
 }
 
-html body input[type="text"] :focus {
+input[type="text"]:focus {
   color: #333;
 }
 
-html body input#new-task {
-  float: left;
-  width: 318px;
+input#new-task {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 280px;
 }
 
-html body p > button :hover {
+form > button:hover {
   color: #0fc57c;
 }
 
-html body li {
-  overflow: hidden;
-  padding: 20px 0px;
-  border-bottom: 1px solid #eee;
-}
-
-html body li > input[type="checkbox"] {
-  margin: 0 10px;
-  position: relative;
-  top: 15px;
-}
-
-html body li > label {
-  font-size: 18px;
-  line-height: 40px;
-  width: 237px;
-  padding: 0 0 0 11px;
-}
-
-html body li > input[type="text"] {
-  width: 226px;
-}
-
-html body #completed-tasks label {
+#completed-tasks label {
   text-decoration: line-through;
   color: #888;
 }
 
-html body ul li input[type="text"] {
-  display: none;
+#incomplete-tasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-html body ul li.editMode input[type="text"] {
-  display: block;
-}
-
-html body ul li.editMode label {
-  display: none;
-}
 /* Highlight the focused input elements */
-html body form input:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 1px solid rgba(81, 203, 238, 1);
+html body form input:focus, html body ul li input:focus {
+  -webkit-box-shadow: 0 0 5px #51cbee;
+          box-shadow: 0 0 5px #51cbee;
+  border: 1px solid #51cbee;
 }
-html body ul li input:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  border: 1px solid rgba(81, 203, 238, 1);
+
+html body form button:focus, html body ul li button:focus {
+  -webkit-box-shadow: 0 0 5px #637377;
+          box-shadow: 0 0 5px #637377;
+  border: 1px transparent #637377;
 }
 
 /* Highlight the focused button elements */
-html body form button:focus {
-  box-shadow: 0 0 5px rgb(99, 115, 119);
-  border: 1px transparent rgba(99, 115, 119, 1);
+@media screen and (max-width: 375px) {
+  .container {
+    width: 100%;
+  }
 }
-html body ul li button:focus {
-  box-shadow: 0 0 5px rgb(99, 115, 119);
-  border: 1px transparent rgba(99, 115, 119, 1);
-}
-
-html body form .delete :hover {
-  color: #cf2323;
-}
-
-@media only screen and (max-width: 375px)
-
+/*# sourceMappingURL=styles.css.map */
