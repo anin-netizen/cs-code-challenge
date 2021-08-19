@@ -40,13 +40,13 @@
   var incompleteTasksList = ["Pay Bills", "Go Shopping"];
   var completeTasksList = ["See the doctor"];
 
-  let createNewTaskElement = function (taskString, arr) {
-    let listItem = document.createElement("li");
-    let checkBox = document.createElement("input");
-    let label = document.createElement("label");
-    let editInput = document.createElement("input");
-    let editButton = document.createElement("button");
-    let deleteButton = document.createElement("button");
+  var createNewTaskElement = function (taskString, arr) {
+    var listItem = document.createElement("li");
+    var checkBox = document.createElement("input");
+    var label = document.createElement("label");
+    var editInput = document.createElement("input");
+    var editButton = document.createElement("button");
+    var deleteButton = document.createElement("button");
 
     checkBox.type = "checkbox";
     editInput.type = "text";
