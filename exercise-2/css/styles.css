@@ -154,8 +154,6 @@ html body form input:focus, html body ul li input:focus {
 }
 
 html body form button:focus, html body ul li button:focus {
-  -webkit-box-shadow: 0 0 5px #637377;
-          box-shadow: 0 0 5px #637377;
   border: 1px transparent #637377;
 }
 

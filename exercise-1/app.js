@@ -1,16 +1,9 @@
-const http = require('http');
-const fs = require('fs');
+const express = require("express");
+const app = express();
+app.use(express.static(__dirname));
 
-//const hostname = '127.0.0.1';
-const port = 3000;
-
-const index = fs.readFileSync(`./index.html`);
-const server = http.createServer((req, res) => {
-  console.log("req url", req.url);
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  return res.end(index);
-})
-server.listen(port, () => {
-  console.log(`server running at http://localhost:${port}/`)
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
-
+const port = 3000 
+app.listen(port, () => console.log(`This app is listening on port ${port}`));
