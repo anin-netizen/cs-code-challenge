@@ -69,7 +69,7 @@
   var addTask = function () {
     var listItemName = taskInput.value;
     if (taskInput.value != "") {
-      listItem = createNewTaskElement(listItemName);
+      var listItem = createNewTaskElement(listItemName);
       incompleteTasksList.push(listItemName);
       localStorage.setItem(
         "incompleteTasks",
