@@ -1,5 +1,5 @@
 (function () {
-  let features = {
+  var features = {
     onload: function () {
       if ("incompleteTasks" in localStorage) {
         incompleteTasksList = JSON.parse(
@@ -91,12 +91,11 @@
 
     var idx1 = incompleteTasksList.indexOf(label.innerText);
     var idx2 = completeTasksList.indexOf(label.innerText);
-    
 
     if (containsClass) {
       var listItemName = editInput.value;
       if (listItemName.trim() == "") {
-        alert("Empty Field")
+        alert("Empty Field");
         editInput.classList.add("error");
         return;
       }
@@ -118,12 +117,11 @@
       }
       label.innerText = editInput.value;
       button.innerText = "Edit";
-    } 
-    else {
+    } else {
       editInput.value = label.innerText;
-      button.innerText = "Save";      
+      button.innerText = "Save";
     }
-    
+
     listItem.classList.toggle("editMode");
   };
 
@@ -151,6 +149,7 @@
   var taskCompleted = function () {
     var listItem = this.parentNode;
     var label = listItem.querySelector("label").innerText;
+
     // console.log(completeTasksList);
     if (listItem.parentNode == incompleteTasksHolder) {
       var idx = incompleteTasksList.indexOf(label);
@@ -205,8 +204,7 @@
     editButton.onclick = editTask;
     deleteButton.onclick = deleteTask;
     checkBox.onchange = checkBoxEventHandler;
-    if (checkBoxEventHandler == taskIncomplete) 
-    checkBox.checked = true;
+    if (checkBoxEventHandler == taskIncomplete) checkBox.checked = true;
     else checkBox.checked = false;
   };
 

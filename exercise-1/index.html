@@ -1,77 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  
-</head>
-<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <html>
+    <body>
+      <p id="myDiv"></p>
+      <div class="page-wrap">
+        <div id="user-container"></div>
+      </div>
 
-<body>
-  <p id="myDiv"></p>
-  <div class="page-wrap">
-    <div id="user-container"></div>
-  </div>
+      <script src="./handlebars-v4.7.7.js"></script>
+      <script>
+        let obj,
+          url = "https://5dc588200bbd050014fb8ae1.mockapi.io/assessment";
+        let combinedData;
 
-  <script src="./handlebars-v4.7.7.js"></script>
-  <script>
+        function getListOfUsers(url) {
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+              obj = { data };
+              createHtml(obj);
+            });
+        }
 
-    let obj, url = 'https://5dc588200bbd050014fb8ae1.mockapi.io/assessment';
-    let combinedData;
-    
-    function getListOfUsers(url) {
-      fetch(url).then(response => response.json()).then(data => {
-        obj = { data };
-        console.log("$$$$$$$$$$$$", obj);
-        createHtml(obj)
-      });
-    }
+        function createHtml(ourData) {
+          ourData.data.map((item) => {
+            item.createdAt = new Date(item.createdAt).toLocaleDateString(
+              "en-US"
+            );
+            return item;
+          });
+          let rawTemplate = document.getElementById("ourTemplate").innerHTML;
+          let compiledTemplate = Handlebars.compile(rawTemplate);
+          let ourGeneratedHTML = compiledTemplate(ourData);
+          let userContainer = document.getElementById("user-container");
+          userContainer.innerHTML = ourGeneratedHTML;
+        }
 
-    function createHtml(ourData) { 
-        ourData.data.map((item) => {
-          item.createdAt = new Date(item.createdAt).toLocaleDateString("en-US");
-          return item;
-        });    
-      let rawTemplate = document.getElementById("ourTemplate").innerHTML;
-      let compiledTemplate = Handlebars.compile(rawTemplate);
-      let ourGeneratedHTML = compiledTemplate(ourData);
-      let userContainer = document.getElementById("user-container");
-      userContainer.innerHTML = ourGeneratedHTML;
-      
-    }
+        //calling the function
+        getListOfUsers(url);
+      </script>
 
-    //calling the function
-    getListOfUsers(url);
-    
-    
-    
-  </script>
+      <script id="ourTemplate" type="text/x-handlebars-template">
+        <ul class="user_list">
+          {{#each data}}
+            <li>
+              <div class="main-container">
+                <div class="image-container"><img src={{this.avatar}} /></div>
+                <div class="details-container">
+                  <p><b>Name:</b> {{this.name}}</p>
+                  <p><b>CreatedAt:</b> {{this.createdAt}}</p>
+                  <p><b>ID:</b> {{this.id}}</p>
+                </div>
+              </div>
 
-
-  <script id="ourTemplate" type="text/x-handlebars-template">
-    <table>
-      <tbody>
-        <tr>
-            <th>Avatar</th>
-            <th>Details</th> 
-        </tr>
-        {{#each data}}         
-        <tr>         
-          <td><p><img class="pic" src="{{avatar}}" alt=""></p></td>
-          <td>
-            <p></p><b>ID</b>: {{id}}</p>
-            <p><b>Name</b>: {{name}}</p>       
-            <p><b>Created At</b>: {{createdAt}}</p>
-                                                
-          </td>      
-          </td>
-        </tr>
+            </li>
           {{/each}}
-      </tbody> 
-</script>
-
-</body>
-
+        </ul>
+      </script>
+    </body>
+  </html>
 </html>
